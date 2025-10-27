@@ -1,8 +1,12 @@
 import { Card } from "@/components/ui/card";
-import { Snowflake, TreePine, Home } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Snowflake, TreePine, Home, MessageCircle } from "lucide-react";
 import gardenDecorImage from "@/assets/garden-decor.jpg";
 
 const GardenSection = () => {
+  const handleWhatsAppClick = () => {
+    window.open("https://wa.me/5500000000000?text=Olá! Gostaria de conhecer as decorações de jardim disponíveis.", "_blank");
+  };
   const decorations = [
     {
       icon: Snowflake,
@@ -97,6 +101,17 @@ const GardenSection = () => {
             <div className="text-4xl font-display font-bold text-secondary mb-2">2 Anos</div>
             <p className="text-foreground/80">Garantia</p>
           </Card>
+        </div>
+
+        <div className="mt-8 text-center">
+          <Button 
+            onClick={handleWhatsAppClick}
+            size="lg"
+            className="bg-secondary hover:bg-secondary/90 text-secondary-foreground shadow-gold-glow text-lg px-8 py-4 animate-pulse hover:animate-none"
+          >
+            <MessageCircle className="mr-2" size={24} />
+            Consultar Decorações de Jardim
+          </Button>
         </div>
       </div>
     </section>

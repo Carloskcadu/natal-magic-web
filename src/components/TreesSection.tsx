@@ -1,7 +1,13 @@
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { MessageCircle } from "lucide-react";
 import treePlainImage from "@/assets/tree-plain.jpg";
 
 const TreesSection = () => {
+  const handleWhatsAppClick = () => {
+    window.open("https://wa.me/5500000000000?text=Olá! Gostaria de conhecer as árvores de Natal disponíveis.", "_blank");
+  };
+
   const treeSizes = [
     { size: "1,20m", description: "Perfeita para apartamentos e espaços compactos" },
     { size: "1,50m", description: "Tamanho ideal para salas de estar médias" },
@@ -57,6 +63,17 @@ const TreesSection = () => {
                 <strong className="text-secondary">Qualidade Premium:</strong> Todas as nossas árvores são feitas com materiais de alta qualidade, 
                 garantindo durabilidade e beleza por muitos Natais.
               </p>
+            </div>
+
+            <div className="mt-6 text-center">
+              <Button 
+                onClick={handleWhatsAppClick}
+                size="lg"
+                className="bg-secondary hover:bg-secondary/90 text-secondary-foreground shadow-gold-glow text-lg px-8 py-4 animate-pulse hover:animate-none"
+              >
+                <MessageCircle className="mr-2" size={24} />
+                Consultar Árvores Disponíveis
+              </Button>
             </div>
           </div>
         </div>

@@ -1,8 +1,12 @@
 import { Card } from "@/components/ui/card";
-import { Sparkles, Star, Lightbulb, Gift } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Sparkles, Star, Lightbulb, Gift, MessageCircle } from "lucide-react";
 import treeDecoratedImage from "@/assets/tree-decorated.jpg";
 
 const OrnamentsSection = () => {
+  const handleWhatsAppClick = () => {
+    window.open("https://wa.me/5500000000000?text=Olá! Gostaria de conhecer os kits de enfeites disponíveis.", "_blank");
+  };
   const ornaments = [
     {
       icon: Sparkles,
@@ -86,10 +90,18 @@ const OrnamentsSection = () => {
           <h4 className="text-2xl font-display font-bold text-primary mb-4">
             Kits Completos Disponíveis
           </h4>
-          <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
+          <p className="text-lg text-foreground/80 max-w-2xl mx-auto mb-6">
             Oferecemos kits de decoração completos para que sua árvore fique perfeita. 
             Cada kit é cuidadosamente selecionado com enfeites que se harmonizam em cores e estilos.
           </p>
+          <Button 
+            onClick={handleWhatsAppClick}
+            size="lg"
+            className="bg-secondary hover:bg-secondary/90 text-secondary-foreground shadow-gold-glow text-lg px-8 py-4 animate-pulse hover:animate-none"
+          >
+            <MessageCircle className="mr-2" size={24} />
+            Ver Kits de Enfeites
+          </Button>
         </div>
       </div>
     </section>
