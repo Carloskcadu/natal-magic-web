@@ -3,10 +3,6 @@ import { MessageCircle } from "lucide-react";
 import heroImage from "@/assets/hero-christmas.jpg";
 
 const HeroSection = () => {
-  const handleWhatsAppClick = () => {
-    window.open("https://wa.me/5500000000000?text=Olá! Gostaria de saber mais sobre as decorações de Natal.", "_blank");
-  };
-
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
@@ -28,15 +24,6 @@ const HeroSection = () => {
         <p className="text-lg md:text-xl text-primary-foreground/80 mb-8 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: "0.4s" }}>
           Transforme sua casa em um verdadeiro cenário natalino com nossas decorações premium. Cada detalhe foi pensado para criar memórias inesquecíveis.
         </p>
-        <Button 
-          onClick={handleWhatsAppClick}
-          size="lg"
-          className="bg-secondary hover:bg-secondary/90 text-secondary-foreground shadow-gold-glow text-lg px-8 py-6 animate-fade-in"
-          style={{ animationDelay: "0.6s" }}
-        >
-          <MessageCircle className="mr-2" size={24} />
-          Fale Conosco no WhatsApp
-        </Button>
       </div>
 
       {/* Scroll Indicator */}

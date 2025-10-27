@@ -5,7 +5,7 @@ import gardenDecorImage from "@/assets/garden-decor.jpg";
 
 const GardenSection = () => {
   const handleWhatsAppClick = () => {
-    window.open("https://wa.me/5500000000000?text=Olá! Gostaria de conhecer as decorações de jardim disponíveis.", "_blank");
+    window.open("https://wa.me/5500000000000?text=Olá! Quero transformar meu jardim num espetáculo natalino! 🎅", "_blank");
   };
   const decorations = [
     {
@@ -50,7 +50,7 @@ const GardenSection = () => {
 
           {/* Content */}
           <div className="space-y-6">
-            <h3 className="text-2xl md:text-3xl font-display font-semibold text-primary mb-6">
+            <h3 className="text-2xl md:text-3xl font-display font-semibold text-primary mb-6 text-center md:text-left">
               Decorações Externas Premium
             </h3>
             
@@ -63,10 +63,10 @@ const GardenSection = () => {
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <div className="flex items-start space-x-4">
-                    <div className="bg-secondary/10 p-3 rounded-lg">
+                    <div className="bg-secondary/10 p-3 rounded-lg flex-shrink-0">
                       <Icon className="w-6 h-6 text-secondary" />
                     </div>
-                    <div>
+                    <div className="text-center md:text-left flex-1">
                       <h4 className="text-xl font-display font-bold text-secondary mb-2">
                         {decoration.title}
                       </h4>
@@ -107,10 +107,10 @@ const GardenSection = () => {
           <Button 
             onClick={handleWhatsAppClick}
             size="lg"
-            className="bg-secondary hover:bg-secondary/90 text-secondary-foreground shadow-gold-glow text-lg px-8 py-4 animate-pulse hover:animate-none"
+            className="bg-gradient-to-r from-secondary to-secondary/80 hover:from-secondary/90 hover:to-secondary/70 text-secondary-foreground shadow-gold-glow text-xl px-10 py-6 animate-pulse hover:animate-none font-bold border-2 border-secondary/50 w-full md:w-auto"
           >
-            <MessageCircle className="mr-2" size={24} />
-            Consultar Decorações de Jardim
+            <MessageCircle className="mr-3" size={28} />
+            🎅 DECORAR MEU JARDIM AGORA!
           </Button>
         </div>
       </div>

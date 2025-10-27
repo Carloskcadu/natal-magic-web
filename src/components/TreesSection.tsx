@@ -5,14 +5,14 @@ import treePlainImage from "@/assets/tree-plain.jpg";
 
 const TreesSection = () => {
   const handleWhatsAppClick = () => {
-    window.open("https://wa.me/5500000000000?text=Olá! Gostaria de conhecer as árvores de Natal disponíveis.", "_blank");
+    window.open("https://wa.me/5500000000000?text=Olá! Quero garantir minha Árvore de Natal 1,20m! 🎄", "_blank");
   };
 
-  const treeSizes = [
-    { size: "1,20m", description: "Perfeita para apartamentos e espaços compactos" },
-    { size: "1,50m", description: "Tamanho ideal para salas de estar médias" },
-    { size: "1,80m", description: "Elegante e imponente para ambientes amplos" },
-    { size: "2,10m+", description: "Majestosa, perfeita para pé direito alto e grandes espaços" },
+  const treeFeatures = [
+    { title: "Galhos Firmes e Resistentes", description: "Estrutura robusta que suporta todos os seus enfeites favoritos" },
+    { title: "Folhas Macias e Ultra Realistas", description: "Toque suave e aparência natural que impressiona" },
+    { title: "Fácil Montagem", description: "Monte em minutos sem complicação, desmonte e guarde facilmente" },
+    { title: "Tamanho Perfeito: 1,20m", description: "Ideal para qualquer ambiente, compacta mas imponente" },
   ];
 
   return (
@@ -39,29 +39,31 @@ const TreesSection = () => {
 
           {/* Content */}
           <div className="order-1 md:order-2 space-y-6">
-            <h3 className="text-2xl md:text-3xl font-display font-semibold text-primary mb-6">
-              Tamanhos Disponíveis
+            <h3 className="text-2xl md:text-3xl font-display font-semibold text-primary mb-6 text-center md:text-left">
+              Árvore Premium 1,20m
             </h3>
             
-            {treeSizes.map((tree, index) => (
+            {treeFeatures.map((feature, index) => (
               <Card 
                 key={index}
                 className="p-6 hover:shadow-gold-glow transition-smooth cursor-pointer bg-card border-2 border-border hover:border-secondary"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <h4 className="text-2xl font-display font-bold text-secondary mb-2">
-                  {tree.size}
+                <h4 className="text-xl font-display font-bold text-secondary mb-2 text-center md:text-left">
+                  {feature.title}
                 </h4>
-                <p className="text-card-foreground/80">
-                  {tree.description}
+                <p className="text-card-foreground/80 text-center md:text-left">
+                  {feature.description}
                 </p>
               </Card>
             ))}
 
-            <div className="mt-8 p-6 bg-primary/5 rounded-xl border-l-4 border-secondary">
-              <p className="text-lg text-foreground">
-                <strong className="text-secondary">Qualidade Premium:</strong> Todas as nossas árvores são feitas com materiais de alta qualidade, 
-                garantindo durabilidade e beleza por muitos Natais.
+            <div className="mt-8 p-6 bg-gradient-to-r from-secondary/10 to-secondary/5 rounded-xl border-2 border-secondary/30 text-center">
+              <p className="text-lg text-foreground mb-2">
+                <strong className="text-secondary text-xl">✨ Qualidade Premium Garantida</strong>
+              </p>
+              <p className="text-foreground/80">
+                Materiais de alta durabilidade que mantêm a beleza por muitos Natais
               </p>
             </div>
 
@@ -69,10 +71,10 @@ const TreesSection = () => {
               <Button 
                 onClick={handleWhatsAppClick}
                 size="lg"
-                className="bg-secondary hover:bg-secondary/90 text-secondary-foreground shadow-gold-glow text-lg px-8 py-4 animate-pulse hover:animate-none"
+                className="bg-gradient-to-r from-secondary to-secondary/80 hover:from-secondary/90 hover:to-secondary/70 text-secondary-foreground shadow-gold-glow text-xl px-10 py-6 animate-pulse hover:animate-none font-bold border-2 border-secondary/50 w-full md:w-auto"
               >
-                <MessageCircle className="mr-2" size={24} />
-                Consultar Árvores Disponíveis
+                <MessageCircle className="mr-3" size={28} />
+                🎄 QUERO MINHA ÁRVORE AGORA!
               </Button>
             </div>
           </div>
