@@ -1,12 +1,13 @@
+import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { Snowflake, TreePine, Home, MessageCircle } from "lucide-react";
 import gardenDecorImage from "@/assets/garden-decor.jpg";
+import CheckoutDialog from "./CheckoutDialog";
 
 const GardenSection = () => {
-  const handleWhatsAppClick = () => {
-    window.open("https://wa.me/5500000000000?text=Olá! Quero transformar meu jardim num espetáculo natalino! 🎅", "_blank");
-  };
+  const [dialogOpen, setDialogOpen] = useState(false);
   const decorations = [
     {
       icon: Snowflake,
@@ -40,7 +41,15 @@ const GardenSection = () => {
 
         <div className="grid md:grid-cols-2 gap-12 items-center mb-12">
           {/* Image */}
-          <div className="animate-fade-in">
+          <div className="animate-fade-in relative">
+            <div className="absolute top-4 left-4 z-10 flex flex-col gap-2">
+              <Badge className="bg-red-600 hover:bg-red-700 text-white font-bold text-sm px-4 py-2 shadow-lg">
+                🔥 Descontos Black Friday
+              </Badge>
+              <Badge className="bg-green-600 hover:bg-green-700 text-white font-bold text-sm px-4 py-2 shadow-lg">
+                ✓ Frete Grátis
+              </Badge>
+            </div>
             <img 
               src={gardenDecorImage} 
               alt="Decoração de jardim com Papai Noel, trenó e renas iluminados" 
@@ -50,9 +59,14 @@ const GardenSection = () => {
 
           {/* Content */}
           <div className="space-y-6">
-            <h3 className="text-2xl md:text-3xl font-display font-semibold text-primary mb-6 text-center md:text-left">
-              Decorações Externas Premium
-            </h3>
+            <div className="text-center md:text-left">
+              <h3 className="text-2xl md:text-3xl font-display font-semibold text-primary mb-4">
+                Decorações Externas Premium
+              </h3>
+              <div className="inline-block bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-3xl px-8 py-4 rounded-full shadow-gold-glow border-2 border-secondary/50">
+                R$ 15,90
+              </div>
+            </div>
             
             {decorations.map((decoration, index) => {
               const Icon = decoration.icon;
@@ -105,7 +119,7 @@ const GardenSection = () => {
 
         <div className="mt-8 text-center">
           <Button 
-            onClick={handleWhatsAppClick}
+            onClick={() => setDialogOpen(true)}
             size="lg"
             className="bg-gradient-to-r from-secondary to-secondary/80 hover:from-secondary/90 hover:to-secondary/70 text-secondary-foreground shadow-gold-glow text-xl px-10 py-6 animate-pulse hover:animate-none font-bold border-2 border-secondary/50 w-full md:w-auto"
           >
@@ -114,6 +128,13 @@ const GardenSection = () => {
           </Button>
         </div>
       </div>
+
+      <CheckoutDialog
+        open={dialogOpen}
+        onOpenChange={setDialogOpen}
+        productName="Decoração de Jardim"
+        productPrice="R$ 15,90"
+      />
     </section>
   );
 };
