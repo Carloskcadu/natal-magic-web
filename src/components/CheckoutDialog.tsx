@@ -3,7 +3,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { MessageCircle } from "lucide-react";
+
 import { useToast } from "@/hooks/use-toast";
 
 interface CheckoutDialogProps {
@@ -18,13 +18,11 @@ const CheckoutDialog = ({ open, onOpenChange, productName, productPrice }: Check
   const [showWhatsAppButton, setShowWhatsAppButton] = useState(false);
   const [formData, setFormData] = useState({
     nome: "",
-    email: "",
     telefone: "",
+    endereco: "",
     rua: "",
-    numero: "",
     bairro: "",
     cidade: "",
-    estado: "",
     cep: ""
   });
 
@@ -39,7 +37,7 @@ const CheckoutDialog = ({ open, onOpenChange, productName, productPrice }: Check
     e.preventDefault();
     
     // Validação básica
-    if (!formData.nome || !formData.email || !formData.telefone || !formData.rua || !formData.cep || !formData.cidade) {
+    if (!formData.nome || !formData.telefone || !formData.endereco || !formData.rua || !formData.bairro || !formData.cidade || !formData.cep) {
       toast({
         title: "Campos obrigatórios",
         description: "Por favor, preencha todos os campos obrigatórios.",
@@ -51,24 +49,12 @@ const CheckoutDialog = ({ open, onOpenChange, productName, productPrice }: Check
     setShowWhatsAppButton(true);
     toast({
       title: "Cadastro realizado!",
-      description: "Agora finalize sua compra no WhatsApp.",
+      description: "Agora finalize sua compra clicando no botão abaixo.",
     });
   };
 
-  const handleWhatsAppClick = () => {
-    const mensagem = `Olá! Quero finalizar minha compra:\n\n` +
-      `📦 Produto: ${productName}\n` +
-      `💰 Valor: ${productPrice}\n\n` +
-      `👤 Nome: ${formData.nome}\n` +
-      `📧 Email: ${formData.email}\n` +
-      `📱 Telefone: ${formData.telefone}\n\n` +
-      `📍 Endereço de entrega:\n` +
-      `${formData.rua}, ${formData.numero}\n` +
-      `${formData.bairro}\n` +
-      `${formData.cidade} - ${formData.estado}\n` +
-      `CEP: ${formData.cep}`;
-    
-    window.open(`https://wa.me/5500000000000?text=${encodeURIComponent(mensagem)}`, "_blank");
+  const handlePurchaseClick = () => {
+    window.open("https://go.perfectpay.com.br/PPU38CQ1KOS", "_blank");
   };
 
   return (
@@ -80,6 +66,14 @@ const CheckoutDialog = ({ open, onOpenChange, productName, productPrice }: Check
           </DialogTitle>
           <p className="text-lg text-secondary font-bold">{productPrice}</p>
         </DialogHeader>
+
+        <div className="bg-gradient-to-r from-primary/5 to-secondary/5 rounded-lg p-4 border-2 border-secondary/20 mt-4">
+          <p className="text-sm text-foreground/90 text-center">
+            ⚠️ <strong>Importante:</strong> Essas informações são de extrema importância para que possamos enviar todos os itens de forma correta e sem falha. 
+            <br />
+            🚚 <strong>Prazo de entrega:</strong> 10 dias úteis com <strong className="text-secondary">FRETE GRÁTIS</strong>!
+          </p>
+        </div>
 
         {!showWhatsAppButton ? (
           <form onSubmit={handleSubmit} className="space-y-4 mt-4">
@@ -95,94 +89,64 @@ const CheckoutDialog = ({ open, onOpenChange, productName, productPrice }: Check
               />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="email">Email *</Label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  placeholder="seu@email.com"
-                  required
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="telefone">Telefone/WhatsApp *</Label>
-                <Input
-                  id="telefone"
-                  name="telefone"
-                  value={formData.telefone}
-                  onChange={handleInputChange}
-                  placeholder="(00) 00000-0000"
-                  required
-                />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="md:col-span-2 space-y-2">
-                <Label htmlFor="rua">Rua *</Label>
-                <Input
-                  id="rua"
-                  name="rua"
-                  value={formData.rua}
-                  onChange={handleInputChange}
-                  placeholder="Nome da rua"
-                  required
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="numero">Número *</Label>
-                <Input
-                  id="numero"
-                  name="numero"
-                  value={formData.numero}
-                  onChange={handleInputChange}
-                  placeholder="000"
-                  required
-                />
-              </div>
+            <div className="space-y-2">
+              <Label htmlFor="telefone">Telefone/WhatsApp *</Label>
+              <Input
+                id="telefone"
+                name="telefone"
+                value={formData.telefone}
+                onChange={handleInputChange}
+                placeholder="(00) 00000-0000"
+                required
+              />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="bairro">Bairro</Label>
+              <Label htmlFor="endereco">Endereço *</Label>
+              <Input
+                id="endereco"
+                name="endereco"
+                value={formData.endereco}
+                onChange={handleInputChange}
+                placeholder="Endereço completo"
+                required
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="rua">Rua *</Label>
+              <Input
+                id="rua"
+                name="rua"
+                value={formData.rua}
+                onChange={handleInputChange}
+                placeholder="Nome da rua"
+                required
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="bairro">Bairro *</Label>
               <Input
                 id="bairro"
                 name="bairro"
                 value={formData.bairro}
                 onChange={handleInputChange}
                 placeholder="Nome do bairro"
+                required
               />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="md:col-span-2 space-y-2">
-                <Label htmlFor="cidade">Cidade *</Label>
-                <Input
-                  id="cidade"
-                  name="cidade"
-                  value={formData.cidade}
-                  onChange={handleInputChange}
-                  placeholder="Nome da cidade"
-                  required
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="estado">Estado</Label>
-                <Input
-                  id="estado"
-                  name="estado"
-                  value={formData.estado}
-                  onChange={handleInputChange}
-                  placeholder="UF"
-                  maxLength={2}
-                />
-              </div>
+            <div className="space-y-2">
+              <Label htmlFor="cidade">Cidade *</Label>
+              <Input
+                id="cidade"
+                name="cidade"
+                value={formData.cidade}
+                onChange={handleInputChange}
+                placeholder="Nome da cidade"
+                required
+              />
             </div>
 
             <div className="space-y-2">
@@ -211,11 +175,10 @@ const CheckoutDialog = ({ open, onOpenChange, productName, productPrice }: Check
               ✅ Cadastro realizado com sucesso!
             </div>
             <Button
-              onClick={handleWhatsAppClick}
+              onClick={handlePurchaseClick}
               size="lg"
               className="w-full bg-gradient-to-r from-secondary to-secondary/80 hover:from-secondary/90 hover:to-secondary/70 text-secondary-foreground shadow-gold-glow text-xl px-10 py-6 animate-pulse hover:animate-none font-bold border-2 border-secondary/50"
             >
-              <MessageCircle className="mr-3" size={28} />
               🎁 FINALIZE SUA COMPRA AQUI!
             </Button>
           </div>

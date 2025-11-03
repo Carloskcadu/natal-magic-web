@@ -51,9 +51,6 @@ const OrnamentsSection = () => {
               <h3 className="text-2xl md:text-3xl font-display font-semibold text-primary mb-4">
                 Coleção Completa de Enfeites
               </h3>
-              <div className="inline-block bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-3xl px-8 py-4 rounded-full shadow-gold-glow border-2 border-secondary/50">
-                R$ 15,90
-              </div>
             </div>
             
             {ornaments.map((ornament, index) => {
@@ -91,6 +88,11 @@ const OrnamentsSection = () => {
               <Badge className="bg-green-600 hover:bg-green-700 text-white font-bold text-sm px-4 py-2 shadow-lg">
                 ✓ Frete Grátis
               </Badge>
+            </div>
+            <div className="absolute bottom-4 right-4 z-10">
+              <div className="bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-3xl px-8 py-4 rounded-full shadow-gold-glow border-2 border-secondary/50">
+                R$ 15,90
+              </div>
             </div>
             <img 
               src={treeDecoratedImage} 

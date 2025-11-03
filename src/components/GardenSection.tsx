@@ -50,6 +50,11 @@ const GardenSection = () => {
                 ✓ Frete Grátis
               </Badge>
             </div>
+            <div className="absolute bottom-4 right-4 z-10">
+              <div className="bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-3xl px-8 py-4 rounded-full shadow-gold-glow border-2 border-secondary/50">
+                R$ 15,90
+              </div>
+            </div>
             <img 
               src={gardenDecorImage} 
               alt="Decoração de jardim com Papai Noel, trenó e renas iluminados" 
@@ -63,9 +68,6 @@ const GardenSection = () => {
               <h3 className="text-2xl md:text-3xl font-display font-semibold text-primary mb-4">
                 Decorações Externas Premium
               </h3>
-              <div className="inline-block bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-3xl px-8 py-4 rounded-full shadow-gold-glow border-2 border-secondary/50">
-                R$ 15,90
-              </div>
             </div>
             
             {decorations.map((decoration, index) => {
